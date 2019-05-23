@@ -1,23 +1,23 @@
-# pks-gcp-quickstart
+# pas-aws-quickstart
 
-This repo contains a concourse pipeline and tasks to automatically deploy PKS on GCP, including paving the environment using Terraform. This is meant for POCs and getting a minimal platform up quickly in a self contained way. this should not be used for production.
-It is using [terraforming-gcp](https://github.com/pivotal-cf/terraforming-gcp) and [Platform Automation](http://docs.pivotal.io/platform-automation/v2.2/) to do so.
+This repo contains a concourse pipeline and tasks to automatically deploy PAS on AWS, including paving the environment using Terraform. This is meant for POCs and getting a minimal platform up quickly in a self contained way. this should not be used for production.
+It is using [terraforming-aws](https://github.com/pivotal-cf/terraforming-aws) and [Platform Automation](http://docs.pivotal.io/platform-automation/v2.2/) to do so.
 
 # Features
 
-* deploys PKS as well as an initial cluster
+* deploys PAS 
 * the pipeline can be deployed multiple times with different values for `env_name`
-  * for each pipeline there will be a dedicated subdomain created in gcp: `env_name.dns_suffix`
-* letsencrypt certificates are generated for PKS and Ops Manager.\
+  * for each pipeline there will be a dedicated subdomain created in aws: `env_name.dns_suffix`
+* letsencrypt certificates are generated for PAS and Ops Manager.\
 
 # Reqirements
 
-* GCP account
+* AWS account
 * Pivotal Network account
 * Git Repository
-* 1 private GCS Bucket
+* 1 private S3 Bucket
 * concourse(local if neccessary)
-* a (sub-)domain hosted on GCP
+* a (sub-)domain hosted on AWS
 
 # Credentials
 
@@ -29,6 +29,6 @@ Copy the `credentials-template.yml` file to `credentials.yml` and modify the app
 ```
 docker-compose up
 fly login -t local -c  http://localhost:8080
-fly -t local set-pipeline -p pks-gcp-quickstart -c pipeline.yml -l credentials.yml --verbose
-fly -t local unpause-pipeline -p pks-gcp-quickstart
+fly -t local set-pipeline -p pas-aws-quickstart -c pipeline.yml -l credentials.yml --verbose
+fly -t local unpause-pipeline -p pas-aws-quickstart
 ```
