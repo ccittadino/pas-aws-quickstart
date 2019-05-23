@@ -8,7 +8,7 @@ It is using [terraforming-aws](https://github.com/pivotal-cf/terraforming-aws) a
 * deploys PAS 
 * the pipeline can be deployed multiple times with different values for `env_name`
   * for each pipeline there will be a dedicated subdomain created in aws: `env_name.dns_suffix`
-* letsencrypt certificates are generated for PAS and Ops Manager.\
+* letsencrypt certificates are generated for PAS and Ops Manager.
 
 # Reqirements
 
